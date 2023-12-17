@@ -35,11 +35,13 @@ public record NaverCafeMenu(
     [property: JsonPropertyName("hasNewArticle")] bool HasNewArticle,
     [property: JsonPropertyName("hasRegion")] bool HasRegion)
 {
-    public string GetUrl(bool isMobile)
+    public string GetDesktopUrl()
     {
-        if (isMobile)
-            return $"https://m.cafe.naver.com/ca-fe/web/cafes/{CafeId}/menus/{MenuId}";
-        else
-            return $"https://cafe.naver.com/ArticleList.nhn?search.clubid={CafeId}&search.menuid={MenuId}&search.boardtype={BoardType}";
+        return $"https://cafe.naver.com/ArticleList.nhn?search.clubid={CafeId}&search.menuid={MenuId}&search.boardtype={BoardType}";
+    }
+
+    public string GetMobileUrl()
+    {
+        return $"https://m.cafe.naver.com/ca-fe/web/cafes/{CafeId}/menus/{MenuId}";
     }
 }

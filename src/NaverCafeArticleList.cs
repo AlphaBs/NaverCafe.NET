@@ -7,7 +7,7 @@ public record NaverCafeArticleList(
     [property: JsonPropertyName("cafeName")] string? CafeName,
     [property: JsonPropertyName("cafeStaff")] bool CafeStaff,
     [property: JsonPropertyName("cafeMember")] bool CafeMember,
-    [property: JsonPropertyName("blockMemberList")] object[]? blockMemberList,
+    [property: JsonPropertyName("blockMemberList")] object[]? BlockMemberList,
     [property: JsonPropertyName("hasNext")] bool HasNext,
     [property: JsonPropertyName("articleList")] NaverCafeArticleListTypeItem[] ArticleList
 );
@@ -65,11 +65,13 @@ public record NaverCafeArticleListItem(
     [property: JsonPropertyName("delParent")] bool DelParent,
     [property: JsonPropertyName("blogScrap")] bool BlogScrap)
 {
-    public string GetUrl(bool isMobile)
+    public string GetDesktopUrl(string clubUrl)
     {
-        if (isMobile)
-            return $"https://m.cafe.naver.com/ca-fe/web/cafes/{CafeId}/articles/{ArticleId}";
-        else
-            return $"https://cafe.naver.com/{CafeId}/{ArticleId}";
+        return $"https://cafe.naver.com/{clubUrl}/{ArticleId}";
+    }
+
+    public string GetMobileUrl()
+    {
+        return $"https://m.cafe.naver.com/ca-fe/web/cafes/{CafeId}/articles/{ArticleId}";
     }
 }
