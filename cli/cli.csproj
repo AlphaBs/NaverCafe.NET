@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\src\NaverCafe.NET.csproj" />
+    <ProjectReference Include="..\src\NaverCafeClient.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

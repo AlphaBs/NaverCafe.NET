@@ -8,7 +8,6 @@ var serializerOptions = new JsonSerializerOptions
 };
 
 var cafe = new NaverCafe(10050146, "joonggonara", httpClient); // 중고나라
-//var cafe = new NaverCafe(19543191, "lolkor", httpClient); // 리그오브레전드 한국커뮤니티
 
 // 카페 대문
 var gateInfo = await cafe.GetCafeGateInfo();
@@ -33,3 +32,13 @@ Console.WriteLine(JsonSerializer.Serialize(noticeList, serializerOptions));
 // 인기글
 var popularArticleList = await cafe.GetWeeklyPopularArticleList();
 Console.WriteLine(JsonSerializer.Serialize(popularArticleList, serializerOptions));
+
+// '중고나라 무료나눔' 게시판 글
+var articleListFromBoard = await cafe.GetArticleListFromBoard("96", new NaverCafeArticleListQuery());
+foreach (var a in articleListFromBoard.ArticleList)
+    Console.WriteLine($"{a.Type}, {a.Item.Subject}, {a.Item.GetDesktopUrl(cafe.ClubUrl)}");
+
+// '중고나라 무료나눔' 게시판 공지
+var noticeListFromBoard = await cafe.GetNoticeListFromBoard("96");
+foreach (var n in noticeListFromBoard.ArticleList)
+    Console.WriteLine($"{n.Type}, {n.Item.Subject}, {n.Item.GetMobileUrl()}");
