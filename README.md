@@ -1,4 +1,4 @@
-# NaverCafe.NET
+# NaverCafeClient
 
 네이버 카페 크롤링을 위한 닷넷 라이브러리입니다.
 
